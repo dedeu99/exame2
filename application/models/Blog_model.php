@@ -102,7 +102,7 @@
 	{
 
 			
-			$query = $this->db->query("select * from users where user_id!='$user_id'");
+			$query = $this->db->query("select * from users where id !='$user_id'");
 			return $query->result_array();
 			
 
