@@ -19,9 +19,7 @@
 		$present_date = date("Y-m-d H:i:s");
 		$query = "INSERT INTO users (password_digest,name,email, created_at, updated_at)
 					VALUES('" .$passe. "','" . $this->input->post('apelido_utilizador') . "','" . $this->input->post('email') . "','" . $present_date . "','" . $present_date . "')";
-		return $this->db->query($query);
-																																						}
-																																						public function validate_user()	
+		return $this->db->query($query);	
 																																						{
 		$query  = "SELECT * FROM users
                             WHERE email = '" . $_POST['username_login'] . "'";
@@ -82,10 +80,13 @@
 	{
 
 			
-			$query = $this->db->query("select * from users where id !='$user_id' and id NOT IN (
+			/*$query = $this->db->query("select * from users where id !='$user_id' and id NOT IN (
 										SELECT friend_user_id FROM friends WHERE user_id='$user_id'
 									)
-			");
+			");*/
+
+			$query = $this->db->query("select * from users where id !='$user_id'");
+			
 			return $query->result_array();
 			
 
