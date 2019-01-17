@@ -81,20 +81,32 @@
 	{
 
 			
-			/*$query = $this->db->query("select * from users where id !='$user_id' and id NOT IN (
+			/*********************************************************/
+			/*                  QUERY DA PERGUNTA 1                  */
+			/*********************************************************/
+
+			/*$query = $this->db->query("select * from users where id !='$user_id'");*/
+			
+
+
+
+
+
+
+			$query = $this->db->query("select * from users where id !='$user_id' and id NOT IN (
 										SELECT friend_user_id FROM friends WHERE user_id='$user_id'
 									)
-			");*/
-
-			$query = $this->db->query("select * from users where id !='$user_id'");
-			
+			");
 			return $query->result_array();
 			
 
 	}
 
 	public function makefriend($user_id,$friend_id){
-		$this->db->query("INSERT INTO friends (user_id, friend_user_id, created_at) VALUES ('$user_id','$friend_id',NOW())");
+
+		//caso já sejam amigos não deverá ser possivel adicionar uma amizade novamente
+		if($this->db->query("SELECT user_id FROM friends WHERE user_id='$user_id' AND friend_user_id='$friend_id'")->num_rows()==0)
+			$this->db->query("INSERT INTO friends (user_id, friend_user_id, created_at) VALUES ('$user_id','$friend_id',NOW())");
 		
 	}
 	public function unfriend($user_id,$friend_id){
