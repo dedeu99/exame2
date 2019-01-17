@@ -141,14 +141,29 @@
 	public function get_public_and_private_posts()
 	{
 
-			
+			/****************************************************************************************************************/
+			/* DE ACORDO COM O ENUNCIADO: 																					*/
+			/* os posts de distribuição restrita gerados pelo proprio utilizador não são visiveis na lista, a menos que o 	*/
+			/* utilizador se faça amigo de si próprio... 																	*/
+			/****************************************************************************************************************/
+
+			$query = $this->db->query("SELECT u.name, m.id, m.user_id, m.content, m.created_at, m.updated_at, m.likes,m.public from users as u inner join (microposts as m) on (u.id=m.user_id) where public='1' OR (public='0' AND u.id IN (
+				SELECT user_id FROM friends WHERE friend_user_id='".$_SESSION['id']."'
+			)) order by m.updated_at desc");
+
+
+
+			/****************************************************************************************************************/
+			/*A solução seguinte também permite ao seu utilizador editar e/ou mudar a visibilidade dos seus posts    APÓS	*/
+			/*colocar os respectivos como privados... Foi a minha primeira implementação até rever o enunciado no final...	*/
+			/****************************************************************************************************************/
+
+			/*
 			$query = $this->db->query("SELECT u.name, m.id, m.user_id, m.content, m.created_at, m.updated_at, m.likes,m.public from users as u inner join (microposts as m) on (u.id=m.user_id) where m.user_id='".$_SESSION['id']."' OR public='1' OR (public='0' AND u.id IN (
 				SELECT user_id FROM friends WHERE friend_user_id='".$_SESSION['id']."'
+			)) order by m.updated_at desc");
+			*/
 
-
-		)) order by m.updated_at desc");
 			return $query->result_array();
-			
-
 	}
 }
