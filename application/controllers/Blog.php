@@ -24,6 +24,9 @@ class Blog extends CI_Controller {
 				{
 					$data['menu2'] = '<a href="' . site_url('blog/logout') .    '">logout</a>';
 					$data['menu3'] = '<a href="' . site_url('blog/post') .    '">new post</a>';
+					$data['menu4'] = '<a href="' . site_url('blog/friends') .    '">friends</a>';
+
+					
 					$data['welcome'] = 'Welcome ' . $_SESSION['name'];
 					
 					$data['session_id'] = $_SESSION['id'];

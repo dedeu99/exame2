@@ -21,7 +21,7 @@
  {$menu1}
 </div>
 <div class="w3-half" style="text-align:right;">
- {$menu2} {$menu3}	 {$welcome} 
+ {$menu4} {$menu2} {$menu3}	 {$welcome} 
 </div>
 
 </header>
