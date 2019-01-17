@@ -11,44 +11,7 @@ class Blog extends CI_Controller {
 				$this->load->library('session');
         }
 		
-        public function index()
-        {
-		
-
-						
-						
-                $data['blogs'] = $this->blog_model->get_posts();
-				
-                $data['menu1'] = '<a href="' . site_url('blog/index') .    '" class="selected">home</a>';
-				if (isset($_SESSION['id']))
-				{
-					$data['menu2'] = '<a href="' . site_url('blog/logout') .    '">logout</a>';
-					$data['menu3'] = '<a href="' . site_url('blog/post') .    '">new post</a>';
-					$data['menu4'] = '<a href="' . site_url('blog/friends') .    '">friends</a>';
-
-					
-					$data['welcome'] = 'Welcome ' . $_SESSION['name'];
-					
-					$data['session_id'] = $_SESSION['id'];
-				}
-				else
-				{
-					$data['menu2'] = '<a href="' . site_url('blog/login') .    '">login</a>';
-					$data['menu3'] = '<a href="' . site_url('blog/register') . '">register</a>';
-					$data['welcome'] = '';
-					
-					$data['session_id'] = 0;
-				}
-
-   
-				$data['image_url'] = base_url('images/microblog.jpg');
-				$data['post_url'] = site_url('blog/post/');
-		
-
-
-                $this->smarty->view( 'index_template.tpl', $data );
-
-        }
+        
 		
 		public function register()
         {
@@ -238,4 +201,46 @@ class Blog extends CI_Controller {
 
 
 		}
+
+
+
+		public function index()
+        {
+		
+
+						
+						
+                
+				
+                $data['menu1'] = '<a href="' . site_url('blog/index') .    '" class="selected">home</a>';
+				if (isset($_SESSION['id']))
+				{
+					$data['menu2'] = '<a href="' . site_url('blog/logout') .    '">logout</a>';
+					$data['menu3'] = '<a href="' . site_url('blog/post') .    '">new post</a>';
+					$data['menu4'] = '<a href="' . site_url('blog/friends') .    '">friends</a>';
+
+					
+					$data['welcome'] = 'Welcome ' . $_SESSION['name'];
+					$data['blogs'] = $this->blog_model->get_public_and_private_posts();
+					$data['session_id'] = $_SESSION['id'];
+				}
+				else
+				{
+					$data['menu2'] = '<a href="' . site_url('blog/login') .    '">login</a>';
+					$data['menu3'] = '<a href="' . site_url('blog/register') . '">register</a>';
+					$data['welcome'] = '';
+					$data['blogs'] = $this->blog_model->get_public_posts();
+					$data['session_id'] = 0;
+				}
+
+   
+				$data['image_url'] = base_url('images/microblog.jpg');
+				$data['post_url'] = site_url('blog/post/');
+		
+
+
+                $this->smarty->view( 'index_template.tpl', $data );
+
+        }
+
 }

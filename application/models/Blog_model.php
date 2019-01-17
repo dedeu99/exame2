@@ -5,15 +5,6 @@
 		  $this->load->database();
 	}
 
-	public function get_posts()
-	{
-
-			
-			$query = $this->db->query('select u.name, m.id, m.user_id, m.content, m.created_at, m.updated_at, m.likes from users as u inner join (microposts as m) on (u.id=m.user_id) order by m.updated_at desc');
-			return $query->result_array();
-			
-
-	}
 
 	public function register_user()
 	{
@@ -122,4 +113,28 @@
 		return $this->db->query($mysql_query);
 	}
 	
+
+	public function get_public_posts()
+	{
+
+			
+			$query = $this->db->query("SELECT u.name, m.id, m.user_id, m.content, m.created_at, m.updated_at, m.likes from users as u inner join (microposts as m) on (u.id=m.user_id) where public='1' order by m.updated_at desc");
+			return $query->result_array();
+			
+
+	}
+
+	public function get_public_and_private_posts()
+	{
+
+			
+			$query = $this->db->query("SELECT u.name, m.id, m.user_id, m.content, m.created_at, m.updated_at, m.likes from users as u inner join (microposts as m) on (u.id=m.user_id) where public='1' OR (public='0' AND u.id IN (
+				SELECT friend_user_id FROM friends WHERE user_id='".$_SESSION['id']."'
+
+
+		)) order by m.updated_at desc");
+			return $query->result_array();
+			
+
+	}
 }

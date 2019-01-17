@@ -58,10 +58,15 @@
 	updated: {$blog.updated_at} created: {$blog.created_at}
 </div>
 
-<div class="w3-col s4 w3-blue" style="text-align:right;">
-	&nbsp; &nbsp;	
-</div>
-
+{if $blog.public==1}
+	<div class="w3-col s4 w3-blue" style="text-align:right;">
+		&nbsp; &nbsp;	
+	</div>
+{else}
+	<div class="w3-col s4 w3-yellow" style="text-align:right;">
+		This post is restricted to {blog.name's friends
+	</div>
+{/if}
 </div>
 
 <br />
