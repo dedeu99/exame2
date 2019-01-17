@@ -194,7 +194,7 @@ class Blog extends CI_Controller {
 			$data['menu1'] = '<a href="' . site_url('blog/index') .    '" >home</a>';
 			if (!isset($_SESSION['id']))
 			{
-				redirect("/");
+				redirect("/blog");
 			}else{
 
 
@@ -214,12 +214,12 @@ class Blog extends CI_Controller {
 			$data['menu1'] = '<a href="' . site_url('blog/index') .    '" >home</a>';
 			if (!isset($_SESSION['id']))
 			{
-				redirect("/");
+				redirect("/blog");
 			}else{
 
 				$this->blog_model->makefriend($_SESSION['id'],$id);
 
-				redirect("");
+				redirect("/blog/friends");
 			}
 
 
@@ -228,12 +228,12 @@ class Blog extends CI_Controller {
 			$data['menu1'] = '<a href="' . site_url('blog/index') .    '" >home</a>';
 			if (!isset($_SESSION['id']))
 			{
-				redirect("/");
+				redirect("/blog");
 			}else{
 
 				$this->blog_model->unfriend($_SESSION['id'],$id);
 
-				redirect("");
+				redirect("/blog/friends");
 			}
 
 

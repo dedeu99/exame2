@@ -40,7 +40,7 @@
           <h3>Friends (click to unfriend!)</h3>
        </header>
 	       {foreach $friends as $friend}
-					<p><a href="{$base_url}blog/unfriend/{$friend.friend_user_id}">{$friend.name} ({$friend.email})</a></p>
+					<p><a href="{$base_url}unfriend/{$friend.friend_user_id}">{$friend.name} ({$friend.email})</a></p>
         {/foreach}
 			</div>
   </div>
@@ -50,7 +50,7 @@
 			<h3>Users (click to make friend!)</h3> 
        </header>
        {foreach $users as $user}
-          <p><a href="{$base_url}blog/makefriend/{$user.id}">{$user.name} ({$user.email})</a></p>
+          <p><a href="{$base_url}makefriend/{$user.id}">{$user.name} ({$user.email})</a></p>
         {/foreach}
     	</div>
   </div>
