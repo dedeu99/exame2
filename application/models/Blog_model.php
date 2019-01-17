@@ -19,11 +19,12 @@
 		$present_date = date("Y-m-d H:i:s");
 		$query = "INSERT INTO users (password_digest,name,email, created_at, updated_at)
 					VALUES('" .$passe. "','" . $this->input->post('apelido_utilizador') . "','" . $this->input->post('email') . "','" . $present_date . "','" . $present_date . "')";
-		return $this->db->query($query);	
+		return $this->db->query($query);
+																																						}
+																																						public function validate_user()	
 																																						{
 		$query  = "SELECT * FROM users
                             WHERE email = '" . $_POST['username_login'] . "'";
-
 		$result = $this->db->query($query);
 		$tupple = $result->row();
 		
