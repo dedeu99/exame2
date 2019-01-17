@@ -186,6 +186,11 @@ class Blog extends CI_Controller {
 			$this->session->sess_destroy();
 			$this->smarty->view('logout_success.tpl', $data);	
 		}
+		public function friends()
+		{
+		
+			$this->smarty->view('friends_template.tpl', $data);	
+		}
 		
 //PONHA O SEU CODIGO ABAIXO DESTA LINHA
 		
