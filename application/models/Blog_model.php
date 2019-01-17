@@ -93,7 +93,11 @@
 	{
 
 			
-			$query = $this->db->query("select * from friends where user_id='$user_id'");
+			$query = $this->db->query("SELECT name,email,friend_user_id FROM users INNER JOIN friends ON
+				friends.friend_user_id==users.id WHERE friends.user_id='$user_id'";
+
+
+
 			return $query->result_array();
 			
 
