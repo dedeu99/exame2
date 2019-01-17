@@ -118,7 +118,7 @@
 	{
 
 			
-			$query = $this->db->query("SELECT u.name, m.id, m.user_id, m.content, m.created_at, m.updated_at, m.likes from users as u inner join (microposts as m) on (u.id=m.user_id) where public='1' order by m.updated_at desc");
+			$query = $this->db->query("SELECT u.name, m.id, m.user_id, m.content, m.created_at, m.updated_at, m.likes,m.public from users as u inner join (microposts as m) on (u.id=m.user_id) where public='1' order by m.updated_at desc");
 			return $query->result_array();
 			
 
@@ -128,7 +128,7 @@
 	{
 
 			
-			$query = $this->db->query("SELECT u.name, m.id, m.user_id, m.content, m.created_at, m.updated_at, m.likes from users as u inner join (microposts as m) on (u.id=m.user_id) where public='1' OR (public='0' AND u.id IN (
+			$query = $this->db->query("SELECT u.name, m.id, m.user_id, m.content, m.created_at, m.updated_at, m.likes,m.public from users as u inner join (microposts as m) on (u.id=m.user_id) where public='1' OR (public='0' AND u.id IN (
 				SELECT friend_user_id FROM friends WHERE user_id='".$_SESSION['id']."'
 
 
