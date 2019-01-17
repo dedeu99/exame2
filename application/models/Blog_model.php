@@ -107,4 +107,12 @@
 			
 
 	}
+
+	public function makefriend($user_id,$friend_id){
+		$this->db->query("INSERT INTO friends (user_id, friend_user_id, created_at) VALUES ('$user_id','$friend_id',NOW())");
+		
+	}
+	public function unfriend($user_id,$friend_id){
+		$this->db->query("DELETE FROM friends WHERE user_id='$user_id' AND friend_user_id = '$friend_id'");
+	}
 }

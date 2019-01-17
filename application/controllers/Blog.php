@@ -210,4 +210,32 @@ class Blog extends CI_Controller {
 
 			}
 		}
+		public function makefriend($id){
+			$data['menu1'] = '<a href="' . site_url('blog/index') .    '" >home</a>';
+			if (!isset($_SESSION['id']))
+			{
+				redirect("/");
+			}else{
+
+				$this->blog_model->makefriend($_SESSION['id'],$id);
+
+				redirect("");
+			}
+
+
+		}
+		public function unfriend($id){
+			$data['menu1'] = '<a href="' . site_url('blog/index') .    '" >home</a>';
+			if (!isset($_SESSION['id']))
+			{
+				redirect("/");
+			}else{
+
+				$this->blog_model->unfriend($_SESSION['id'],$id);
+
+				redirect("");
+			}
+
+
+		}
 }
