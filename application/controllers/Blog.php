@@ -199,24 +199,14 @@ class Blog extends CI_Controller {
 
 
 				$data['menu2'] = '<a href="' . site_url('blog/logout') .    '">logout</a>';
-				
 				$data['menu4'] = '<a href="' . site_url('blog/friends') .    '" class="selected">friends</a>';
-
-				
 				$data['welcome'] = 'Welcome ' . $_SESSION['name'];
-				
 				$data['session_id'] = $_SESSION['id'];
+				$data['image_url'] = base_url('images/microblog.jpg');
+				$data['friends'] = $this->blog_model->get_friends(($_SESSION['id']);
+
+				$this->smarty->view('friends_template.tpl', $data);	
+
 			}
-
-
-			$data['image_url'] = base_url('images/microblog.jpg');
-			
-
-
-
-
-
-
-			$this->smarty->view('friends_template.tpl', $data);	
 		}
 }
