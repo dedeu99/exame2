@@ -64,7 +64,7 @@
 	</div>
 {else}
 	<div class="w3-col s4 w3-yellow" style="text-align:right;">
-		This post is restricted to {blog.name's friends
+		This post is restricted to {$blog.name}'s friends
 	</div>
 {/if}
 </div>
