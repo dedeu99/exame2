@@ -11,17 +11,17 @@
 <body class="w3-container">
 
 <div class="w3-image">
-  <img src="/~a999998/images/microblog.jpg" >
+  <img src="{$image_url}" >
 </div>
 
 
 <header class="w3-topnav w3-blue">
 
 <div class="w3-half" style="text-align:left;">
- <a href="/~a999998/index.php/blog/index" class="selected">home</a>
+ {$menu1}
 </div>
 <div class="w3-half" style="text-align:right;">
- <a href="/~a999998/index.php/blog/logout">logout</a> 	 Welcome Jose Bastos 
+ {$menu4} {$menu2} {$menu3}  {$welcome} 
 </div>
 
 </header>
@@ -39,10 +39,9 @@
 	    <header class="w3-container w3-blue">
           <h3>Friends (click to unfriend!)</h3>
        </header>
-	 
-					<p><a href="/~a999998/index.php/blog/unfriend/4">Maria Silva(maria.silva@gmail.com)</a></p>
-					<p><a href="/~a999998/index.php/blog/unfriend/5">Paulo Silva(a22297@ualg.pt)</a></p>
-					<p><a href="/~a999998/index.php/blog/unfriend/9">Pedro Graça(kabasizubo@hostcalls.com)</a></p>
+	       {foreach $friends as $friend}
+					<p><a href="{$base_url}blog/unfriend/$friend.friend_user_id">{$friend.name} ({$friend.email})</a></p>
+        {/foreach}
 			</div>
   </div>
   <div class="w3-container w3-half ">

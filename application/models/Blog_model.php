@@ -89,4 +89,22 @@
 //PONHA O SEU CODIGO ABAIXO DESTA LINHA
 																																						
 
+	public function get_friends($user_id)
+	{
+
+			
+			$query = $this->db->query('select * from friends where user_id=$user_id');
+			return $query->result_array();
+			
+
+	}
+	public function get_users($user_id)
+	{
+
+			
+			$query = $this->db->query('select * from users where user_id!=$user_id');
+			return $query->result_array();
+			
+
+	}
 }

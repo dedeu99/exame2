@@ -186,12 +186,37 @@ class Blog extends CI_Controller {
 			$this->session->sess_destroy();
 			$this->smarty->view('logout_success.tpl', $data);	
 		}
-		public function friends()
-		{
-		
-			$this->smarty->view('friends_template.tpl');//, $data);	
-		}
 		
 //PONHA O SEU CODIGO ABAIXO DESTA LINHA
 		
+		public function friends()
+		{
+			$data['menu1'] = '<a href="' . site_url('blog/index') .    '" >home</a>';
+			if (!isset($_SESSION['id']))
+			{
+				redirect("/");
+			}else{
+
+
+				$data['menu2'] = '<a href="' . site_url('blog/logout') .    '">logout</a>';
+				
+				$data['menu4'] = '<a href="' . site_url('blog/friends') .    '" class="selected">friends</a>';
+
+				
+				$data['welcome'] = 'Welcome ' . $_SESSION['name'];
+				
+				$data['session_id'] = $_SESSION['id'];
+			}
+
+
+			$data['image_url'] = base_url('images/microblog.jpg');
+			
+
+
+
+
+
+
+			$this->smarty->view('friends_template.tpl', $data);	
+		}
 }
