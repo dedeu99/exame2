@@ -189,7 +189,7 @@ class Blog extends CI_Controller {
 		public function friends()
 		{
 		
-			$this->smarty->view('friends_template.tpl', $data);	
+			$this->smarty->view('friends_template.tpl');//, $data);	
 		}
 		
 //PONHA O SEU CODIGO ABAIXO DESTA LINHA
