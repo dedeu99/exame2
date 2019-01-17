@@ -21,7 +21,7 @@
  {$menu1}
 </div>
 <div class="w3-half" style="text-align:right;">
- {$menu4} {$menu2} {$menu3}  {$welcome} 
+ {$menu4} {$menu2}  {$welcome} 
 </div>
 
 </header>
@@ -49,16 +49,9 @@
 	   <header class="w3-container w3-blue">
 			<h3>Users (click to make friend!)</h3> 
        </header>
-
-			<p><a href="/~a999998/index.php/blog/makefriend/2">Jose Bastos(jose.bastos@gmail.com)</a></p>
-    		<p><a href="/~a999998/index.php/blog/makefriend/4">Maria Silva(maria.silva@gmail.com)</a></p>
-    		<p><a href="/~a999998/index.php/blog/makefriend/5">Paulo Silva(a22297@ualg.pt)</a></p>
-    		<p><a href="/~a999998/index.php/blog/makefriend/6">Joao Andrade(a52495@ualg.pt)</a></p>
-    		<p><a href="/~a999998/index.php/blog/makefriend/7">Dário Hermann(a49728@ualg.pt)</a></p>
-    		<p><a href="/~a999998/index.php/blog/makefriend/8">Banana Bananas(bananas@hotmail.com)</a></p>
-    		<p><a href="/~a999998/index.php/blog/makefriend/9">Pedro Graça(kabasizubo@hostcalls.com)</a></p>
-    		<p><a href="/~a999998/index.php/blog/makefriend/10">Minion (minionsforever@hotmail.com)</a></p>
-    		<p><a href="/~a999998/index.php/blog/makefriend/11">Dank Blogger(dank@blogger.ru)</a></p>
+       {foreach $users as $user}
+          <p><a href="{$base_url}blog/makefriend/$user.id">{$user.name} ({$user.email})</a></p>
+        {/foreach}
     	</div>
   </div>
 </div>

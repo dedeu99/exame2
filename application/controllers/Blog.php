@@ -204,6 +204,7 @@ class Blog extends CI_Controller {
 				$data['session_id'] = $_SESSION['id'];
 				$data['image_url'] = base_url('images/microblog.jpg');
 				$data['friends'] = $this->blog_model->get_friends($_SESSION['id']);
+				$data['users'] = $this->blog_model->get_users($_SESSION['id']);
 
 				$this->smarty->view('friends_template.tpl', $data);	
 
