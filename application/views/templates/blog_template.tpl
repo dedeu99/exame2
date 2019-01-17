@@ -37,6 +37,10 @@
 </div>
 
   <h3 style="text-align:center;">
+  	<input type="radio" name="visibility" value="1" checked> Post to All
+  <input type="radio" name="visibility" value="0"> Post only to friends
+
+
   <input class="w3-btn w3-green w3-round-large" name="submit" type="submit" value="Go" />
 <a href="{$index_url}">
   <input class="w3-btn w3-red w3-round-large"type="button" value="Cancel" />
