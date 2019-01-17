@@ -143,9 +143,9 @@ class Blog extends CI_Controller {
 				$data['menu2'] = '';
 				$data['content'] = '';
 				$data['blog_id'] = '';
-                                $data['image_url']=base_url('images/microblog.jpg');
-                                $data['post_url']=site_url('blog/post/');
-                                $data['index_url']=site_url('blog/index');
+                $data['image_url']=base_url('images/microblog.jpg');
+                $data['post_url']=site_url('blog/post/');
+                $data['index_url']=site_url('blog/index');
 				
 				if ($blog_id)
 				{
@@ -156,7 +156,7 @@ class Blog extends CI_Controller {
 				
 				$this->load->library('form_validation');
 				$this->form_validation->set_rules('blog', 'Blog', 'required',
-				        array('required'   => 'The %s can not be empty')) ;
+				array('required'   => 'The %s can not be empty')) ;
 						
 				if ($this->form_validation->run() === FALSE)
 				{
@@ -173,7 +173,7 @@ class Blog extends CI_Controller {
 					{
 						$this->blog_model->update_blog($blog_id);
 					}
-				redirect('/blog');		
+					redirect('/blog');		
 				} 
 		}
 		

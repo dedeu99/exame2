@@ -64,20 +64,6 @@
 	}
 	
 	
-	public function new_blog()
-	{
-		$present_date = date("Y-m-d H:i:s");
-		$mysql_query = "INSERT INTO microposts (user_id, content,created_at, updated_at)
-					VALUES('" . $_SESSION['id'] . "','" . $_POST['blog'] . "','" . $present_date . "','". $present_date . "')"  ;
-		return $this->db->query($mysql_query);
-	}
-	
-	public function update_blog($blog_id)
-	{
-		$present_date = date("Y-m-d H:i:s");	
-		$mysql_query = "UPDATE microposts SET content='" . $_POST['blog'] . "' , updated_at='" . $present_date .  "'WHERE id='" . $blog_id . "'" ;
-		return $this->db->query($mysql_query);
-	}
 	
 	public function get_blog($blog_id)
 	{
@@ -121,4 +107,19 @@
 	public function unfriend($user_id,$friend_id){
 		$this->db->query("DELETE FROM friends WHERE user_id='$user_id' AND friend_user_id = '$friend_id'");
 	}
+	public function new_blog()
+	{
+		$present_date = date("Y-m-d H:i:s");
+		$mysql_query = "INSERT INTO microposts (user_id, content,created_at, updated_at,public)
+					VALUES('" . $_SESSION['id'] . "','" . $_POST['blog'] . "','" . $present_date . "','". $present_date . "','". $_POST['visibility'] . "')"  ;
+		return $this->db->query($mysql_query);
+	}
+	
+	public function update_blog($blog_id)
+	{
+		$present_date = date("Y-m-d H:i:s");	
+		$mysql_query = "UPDATE microposts SET content='" . $_POST['blog'] . "' , updated_at='" . $present_date . "' , public='" . $_POST['visibility'] .  "'WHERE id='" . $blog_id . "'" ;
+		return $this->db->query($mysql_query);
+	}
+	
 }
