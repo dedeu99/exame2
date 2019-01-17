@@ -34,11 +34,13 @@
 
  <div  style="text-align:center;"> 
    <textarea name="blog"   rows="5" cols=60">{$content}	</textarea>
+   <br>
+   
+  	<input type="radio" name="visibility" value="1" checked> Post to All
+  <input type="radio" name="visibility" value="0"> Post only to friends
 </div>
 
   <h3 style="text-align:center;">
-  	<input type="radio" name="visibility" value="1" checked> Post to All
-  <input type="radio" name="visibility" value="0"> Post only to friends
 
 
   <input class="w3-btn w3-green w3-round-large" name="submit" type="submit" value="Go" />
